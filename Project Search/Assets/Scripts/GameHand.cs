@@ -5,10 +5,12 @@ public class GameHand : MonoBehaviour
 {
     private LayerMask _interactableLayer;
     private Idraggable _heldDraggable;
+    private RaycastHit2D[] _raycastHits;
 
     private void Awake()
     {
         _interactableLayer = LayerMask.GetMask("Interactable");
+        _raycastHits = new RaycastHit2D[4];
     }
 
     private void OnEnable()
@@ -35,25 +37,50 @@ public class GameHand : MonoBehaviour
     {
        if(_heldDraggable == null) 
            return;
+
+       if (RaycastFoDraggableReceiver(out IDraggableReceiver receiver))
+       {
+           if (receiver.CanReceiveDraggable(_heldDraggable))
+           {
+               _heldDraggable.OnDrop();
+               receiver.ReceiveDraggable(_heldDraggable);
+               _heldDraggable = null;
+               return;
+           }
+       }
        
-       _heldDraggable.OnDrop();
+       _heldDraggable.OnNonReceivedDrop();
        _heldDraggable = null;
     }
 
     private bool RaycastForDraggable(out Idraggable draggable)
     {
-        draggable = null;
+        return RaycastForInteractable(out draggable);
+    }
+    
+    private bool RaycastFoDraggableReceiver(out IDraggableReceiver receiver)
+    {
+        return RaycastForInteractable(out receiver);
+    }
+
+    private bool RaycastForInteractable<T>(out T target)
+    {
+        target = default(T);
+        int hitCount = Physics2D.RaycastNonAlloc(transform.position, Vector3.forward, _raycastHits,1000, _interactableLayer);
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.forward, 1000, _interactableLayer);
-        if(hit.collider != null)
+        for (int i = 0; i < hitCount; i++)
         {
-            GameObject hitObject = hit.collider.gameObject;
-            Component component = hitObject.GetComponent(typeof(Idraggable));
-            if (component is Idraggable hitDraggable)
+            RaycastHit2D currentHit = _raycastHits[i];
+            if (currentHit.collider != null)
             {
-                draggable = hitDraggable;
-                return true;
-            }
+                GameObject hitObject = currentHit.collider.gameObject;
+                Component component = hitObject.GetComponent(typeof(T));
+                if (component is T typedComponent)
+                {
+                    target = typedComponent;
+                    return true;
+                }
+            } 
         }
 
         return false;
