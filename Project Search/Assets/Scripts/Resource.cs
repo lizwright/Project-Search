@@ -29,4 +29,10 @@ public class Resource : MonoBehaviour, Idraggable
         
         transform.position = InputManager.GetMouseWorldPosition();
     }
+
+    public void RemoveFromPlay()
+    {
+        ResourceHolder.RemoveResource(this);
+        ResourcePool.AddResource(this);
+    }
 }

@@ -11,7 +11,6 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
     {
         Resource resource = draggable as Resource;
         Debug.Log($"Dropped {resource.name} onto a slot!");
-        Destroy(resource.gameObject);
-        //resource.RemoveFromPlay();
+        resource.RemoveFromPlay();
     }
 }
