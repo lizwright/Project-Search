@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour, Idraggable
 {
+    public enum Suit { Circle, Square, Triangle, Diamond }
+
+    [SerializeField] private Suit _resourceSuit;
+    public Suit ResourceSuit => _resourceSuit;
+
     private bool _beingHeld;
     private Vector3 _lastNonHeldPosition;
     

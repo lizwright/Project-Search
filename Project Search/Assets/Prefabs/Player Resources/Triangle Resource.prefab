@@ -55,9 +55,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Triangle Resource
       objectReference: {fileID: 0}
+    - target: {fileID: 5285371534349905254, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
+      propertyPath: _resourceSuit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285371534349905254, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
+      propertyPath: _resourceType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8647180657295214405, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e30253950f63dc449b39f6f61c15d9a1, type: 3}
+    - target: {fileID: 8647180657295214405, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.14901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647180657295214405, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647180657295214405, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9450981
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
