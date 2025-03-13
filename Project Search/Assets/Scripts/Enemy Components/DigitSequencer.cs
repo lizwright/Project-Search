@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class DigitSequencer : MonoBehaviour
 {
-    [SerializeField] private List<Trait> _traits;
     [SerializeField] private DigitSlot[] _digitSlots;
 
     private DigitSequenceOptions _digitOptions;
+    
 
-    private void Awake()
-    {
-        CreateSequence();
-    }
-
-    public void CreateSequence()
+    public void CreateSequence(List<Trait> traits)
     {
         // init digit options
         
@@ -23,12 +18,12 @@ public class DigitSequencer : MonoBehaviour
         DebugPrintDigitOptions("initial options:");
         
         //sort traits into priority order
-        _traits.Sort((a,b) => a.Priority.CompareTo(b.Priority));
+        traits.Sort((a,b) => a.Priority.CompareTo(b.Priority));
 
         //apply pre choosing effects
-        for (int i = 0; i < _traits.Count; i++)
+        for (int i = 0; i < traits.Count; i++)
         {
-            _traits[i].ApplyPreChoosingEffects(_digitOptions);
+            traits[i].ApplyPreChoosingEffects(_digitOptions);
         }
 
         DebugPrintDigitOptions("after pre-choosing effect options options:");
