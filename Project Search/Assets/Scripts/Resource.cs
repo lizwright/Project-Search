@@ -4,12 +4,15 @@ public class Resource : MonoBehaviour, Idraggable
 {
     public enum Suit { Circle, Square, Triangle, Diamond }
 
+    [HideInInspector]
+    public ResourceHolder resourceHolder;
+
     [SerializeField] private Suit _resourceSuit;
     public Suit ResourceSuit => _resourceSuit;
 
     private bool _beingHeld;
     private Vector3 _lastNonHeldPosition;
-    
+
     public void OnPickUp()
     {
         _lastNonHeldPosition = transform.position;
@@ -37,7 +40,6 @@ public class Resource : MonoBehaviour, Idraggable
 
     public void RemoveFromPlay()
     {
-        ResourceHolder.RemoveResource(this);
-        ResourcePool.AddResource(this);
+        resourceHolder.RemoveResource(this);
     }
 }
