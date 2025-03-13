@@ -31,4 +31,20 @@ public class DigitSequenceOptions
         }
     }
 
+    public Resource.Suit GetRandomOptionForDigit(int digitIndex)
+    {
+        List<Resource.Suit> options = _digitOptions[digitIndex];
+        
+        if (options.Count == 0)
+        {
+            Debug.LogError("Tried to get an option for a digit but they have no valid options! This is a big error, don't ignore this!!! (Defaulting to Circle");
+            return Resource.Suit.Circle;
+        }
+        
+        int chosenIndex = Random.Range(0, options.Count);
+
+        return options[chosenIndex];
+
+    }
+
 }

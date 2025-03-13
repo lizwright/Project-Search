@@ -6,15 +6,18 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
     [SerializeField] private ResourceDisplay _hiddenResourceDisplay;
     [SerializeField] private ResourceDisplay _guessedResourceDisplay;
     
+    public Resource.Suit ResourceToGuess => _resourceToGuess;
     private Resource.Suit _resourceToGuess;
 
     private void Awake()
     {
         _hidePanel.SetActive(true);
-        
-        //while we dont have generators, let's make it easy :)
-        _resourceToGuess = Resource.Suit.Circle;
-        _hiddenResourceDisplay.ShowResource(Resource.Suit.Circle);
+    }
+
+    public void SetSuit(Resource.Suit suit)
+    {
+        _resourceToGuess = suit;
+        _hiddenResourceDisplay.ShowResource(suit);
     }
 
     public bool CanReceiveDraggable(Idraggable draggable)

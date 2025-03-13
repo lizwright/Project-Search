@@ -20,7 +20,7 @@ public class DigitSequencer : MonoBehaviour
         
         _digitOptions = new DigitSequenceOptions(_digitSlots.Length);
 
-        DebugPrintDigitSequence("initial options:");
+        DebugPrintDigitOptions("initial options:");
         
         //sort traits into priority order
         _traits.Sort((a,b) => a.Priority.CompareTo(b.Priority));
@@ -31,11 +31,20 @@ public class DigitSequencer : MonoBehaviour
             _traits[i].ApplyPreChoosingEffects(_digitOptions);
         }
 
-        DebugPrintDigitSequence("after pre-choosing effect options options:");
+        DebugPrintDigitOptions("after pre-choosing effect options options:");
         
+        //chose digits
+        for (int i = 0; i < _digitSlots.Length; i++)
+        {
+            DigitSlot slot = _digitSlots[i];
+            slot.SetSuit(_digitOptions.GetRandomOptionForDigit(i));
+        }
+
+        DebugPrintDigitSequence("Chosen Sequence: ");
+
     }
 
-    private void DebugPrintDigitSequence(string openingMessage = "")
+    private void DebugPrintDigitOptions(string openingMessage = "")
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendLine(openingMessage);
@@ -65,5 +74,20 @@ public class DigitSequencer : MonoBehaviour
         }
         
         Debug.Log(sb);
+    }
+
+    private void DebugPrintDigitSequence(string openingMessage = "")
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine(openingMessage);
+
+        for (int i = 0; i < _digitSlots.Length; i++)
+        {
+            DigitSlot slot = _digitSlots[i];
+            sb.Append($" {slot.ResourceToGuess.ToString()} ");
+        }
+        
+        Debug.Log(sb);
+
     }
 }
