@@ -20,8 +20,7 @@ public class DigitSequencer : MonoBehaviour
         
         _digitOptions = new DigitSequenceOptions(_digitSlots.Length);
 
-        Debug.Log("initial options:");
-        DebugPrintDigitSequence();
+        DebugPrintDigitSequence("initial options:");
         
         //sort traits into priority order
         _traits.Sort((a,b) => a.Priority.CompareTo(b.Priority));
@@ -32,14 +31,15 @@ public class DigitSequencer : MonoBehaviour
             _traits[i].ApplyPreChoosingEffects(_digitOptions);
         }
 
-        Debug.Log("after pre-choosing effect options options:");
-        DebugPrintDigitSequence();
+        DebugPrintDigitSequence("after pre-choosing effect options options:");
         
     }
 
-    private void DebugPrintDigitSequence()
+    private void DebugPrintDigitSequence(string openingMessage = "")
     {
         StringBuilder sb = new StringBuilder();
+        sb.AppendLine(openingMessage);
+        
         for (int i = 0; i < _digitOptions.Options.Length; i++)
         {
             sb.Append($"slot {i}:");
