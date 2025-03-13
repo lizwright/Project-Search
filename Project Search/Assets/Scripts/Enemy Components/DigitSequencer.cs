@@ -7,7 +7,7 @@ public class DigitSequencer : MonoBehaviour
     [SerializeField] private List<Trait> _traits;
     [SerializeField] private DigitSlot[] _digitSlots;
 
-    private List<Resource.Suit>[] _digitOptions;
+    private DigitSequenceOptions _digitOptions;
 
     private void Awake()
     {
@@ -17,18 +17,8 @@ public class DigitSequencer : MonoBehaviour
     public void CreateSequence()
     {
         // init digit options
-        //todo: digit options should probably be it's own class, with a clear suit method
-        _digitOptions = new List<Resource.Suit>[_digitSlots.Length];
-        for (int i = 0; i < _digitOptions.Length; i++)
-        {
-            _digitOptions[i] = new List<Resource.Suit>
-            {
-                Resource.Suit.Circle,
-                Resource.Suit.Square,
-                Resource.Suit.Triangle,
-                Resource.Suit.Diamond,
-            };
-        }
+        
+        _digitOptions = new DigitSequenceOptions(_digitSlots.Length);
 
         Debug.Log("initial options:");
         DebugPrintDigitSequence();
@@ -39,8 +29,7 @@ public class DigitSequencer : MonoBehaviour
         //apply pre choosing effects
         for (int i = 0; i < _traits.Count; i++)
         {
-            _traits[i].ApplyPreChoosingEffects(ref _digitOptions);
-
+            _traits[i].ApplyPreChoosingEffects(_digitOptions);
         }
 
         Debug.Log("after pre-choosing effect options options:");
@@ -51,10 +40,10 @@ public class DigitSequencer : MonoBehaviour
     private void DebugPrintDigitSequence()
     {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < _digitOptions.Length; i++)
+        for (int i = 0; i < _digitOptions.Options.Length; i++)
         {
             sb.Append($"slot {i}:");
-            List<Resource.Suit> currentList = _digitOptions[i];
+            List<Resource.Suit> currentList = _digitOptions.Options[i];
             if (currentList.Contains(Resource.Suit.Circle))
             {
                 sb.Append(" Circle ");
