@@ -73,7 +73,7 @@ public class DigitSequencer : MonoBehaviour
             sb.AppendLine();
         }
         
-        Debug.Log(sb);
+        Logger.Instance.LogDigitMessage(sb.ToString());
     }
 
     private void DebugPrintDigitSequence(string openingMessage = "")
@@ -87,7 +87,7 @@ public class DigitSequencer : MonoBehaviour
             sb.Append($" {slot.ResourceToGuess.ToString()} ");
         }
         
-        Debug.Log(sb);
+        Logger.Instance.LogDigitMessage(sb.ToString());
 
     }
 }

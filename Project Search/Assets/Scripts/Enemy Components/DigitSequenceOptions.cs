@@ -23,7 +23,7 @@ public class DigitSequenceOptions
 
     public void RemoveSuitFromAll(Resource.Suit suit)
     {
-        Debug.Log($"Removing Suit {suit}");
+        Logger.Instance.LogDigitMessage($"Removing Suit {suit}");
         
         foreach (List<Resource.Suit> options in _digitOptions)
         {
