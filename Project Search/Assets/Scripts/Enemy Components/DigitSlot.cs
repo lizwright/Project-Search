@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DigitSlot : MonoBehaviour, IDraggableReceiver
@@ -8,10 +10,15 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
     
     public Resource.Suit ResourceToGuess => _resourceToGuess;
     private Resource.Suit _resourceToGuess;
+    
+    private List<Resource.Suit> _guessedResources;
+    private bool _guessed;
 
     private void Awake()
     {
         _hidePanel.SetActive(true);
+        _guessedResources = new List<Resource.Suit>(Enum.GetValues(typeof(Resource.Suit)).Length);
+        
     }
 
     public void SetSuit(Resource.Suit suit)
@@ -22,7 +29,13 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
 
     public bool CanReceiveDraggable(Idraggable draggable)
     {
-        return draggable is Resource;
+        if (draggable is not Resource resource)
+            return false;
+        
+        if (_guessed)
+            return false;
+        
+        return _guessedResources.Contains(resource.ResourceSuit) == false;
     }
 
     public void ReceiveDraggable(Idraggable draggable)
@@ -40,10 +53,13 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
 
     private void MakeAGuess(Resource.Suit guess)
     {
+        _guessedResources.Add(guess);
+        
         if (guess == _resourceToGuess)
         {
             _hidePanel.SetActive(false);
             _guessedResourceDisplay.gameObject.SetActive(false);
+            _guessed = true;
         }
         else
         {
