@@ -20,4 +20,14 @@ public class InputManager : MonoBehaviour
         Vector2 worldPosition = _camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
         return worldPosition;
     }
+
+    public static void EnableGameInput()
+    {
+        _inputActions.Game.Enable();
+    }
+    
+    public static void DisableGameInput()
+    {
+        _inputActions.Game.Disable();
+    }
 }
