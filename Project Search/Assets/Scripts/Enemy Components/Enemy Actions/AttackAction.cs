@@ -8,6 +8,6 @@ public class AttackAction : EnemyAction
 
     public override void DoAction()
     {
-        Debug.Log($" Doing {_damage} damage to player");
+        PlayerHealth.Instance.ReduceHealth(_damage);
     }
 }
