@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
    [SerializeField] private DigitSequencer _digitSequencer;
    [SerializeField] private TraitsDisplay _traitsDisplay;
+   [SerializeField] private EnemyIntentDisplay _intentDisplay;
 
    private int actionsTakenIndex = 0;
    
@@ -15,6 +16,7 @@ public class Enemy : MonoBehaviour
    {
       _traitsDisplay.DisplayTraits(_traits);
       _digitSequencer.CreateSequence(_traits);
+      _intentDisplay.ShowIntent(_actions[0]);
    }
 
    public void TakeTurn()
@@ -23,5 +25,7 @@ public class Enemy : MonoBehaviour
       actionsTakenIndex++;
       
       actionToTake.DoAction();
+      _intentDisplay.ShowIntent(_actions[actionsTakenIndex % _actions.Length]);
+
    }
 }
