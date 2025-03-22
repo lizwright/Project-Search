@@ -278,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3468809127729594699}
   - component: {fileID: 5542766883776633329}
+  - component: {fileID: 4407329319369737977}
   - component: {fileID: 7124746056364685176}
   m_Layer: 0
   m_Name: Enemy
@@ -320,6 +321,19 @@ MonoBehaviour:
   _digitSequencer: {fileID: 785698523114394738}
   _traitsDisplay: {fileID: 1289963393959418564}
   _intentDisplay: {fileID: 8047024029996298611}
+  _guessedDigitTracker: {fileID: 4407329319369737977}
+--- !u!114 &4407329319369737977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468809127729594698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c02c0e5cdd251d42a9b3ee43c879d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &7124746056364685176
 BoxCollider2D:
   m_ObjectHideFlags: 0

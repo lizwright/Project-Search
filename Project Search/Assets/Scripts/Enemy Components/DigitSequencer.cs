@@ -11,7 +11,7 @@ public class DigitSequencer : MonoBehaviour
     private DigitSequenceOptions _digitOptions;
     private Bounds[] _bounds;
     
-    public void CreateDigitSlots(int slotCount)
+    public DigitSlot[] CreateDigitSlots(int slotCount, GuessedDigitTracker tracker)
     {
         RemoveExistingSlots();
         
@@ -22,6 +22,7 @@ public class DigitSequencer : MonoBehaviour
         {
             GameObject slotObj = Instantiate(_digitSlotTemplate, _digitSlotHolder.transform);
             _digitSlots[i] = slotObj.GetComponent<DigitSlot>();
+            _digitSlots[i].SetGuessedDigitTracker(tracker);
             _bounds[i] = slotObj.GetComponent<Collider2D>().bounds;
         }
 
@@ -32,6 +33,8 @@ public class DigitSequencer : MonoBehaviour
             Transform slotTransform = _digitSlots[i].transform;
             slotTransform.position = new Vector3(xPositions[i], slotTransform.position.y, slotTransform.position.z);
         }
+
+        return _digitSlots;
     }
     
     private void RemoveExistingSlots()

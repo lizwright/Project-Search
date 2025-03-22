@@ -10,7 +10,8 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
     
     public Resource.Suit ResourceToGuess => _resourceToGuess;
     private Resource.Suit _resourceToGuess;
-    
+
+    private GuessedDigitTracker _guessedDigitTracker;
     private List<Resource.Suit> _guessedResources;
     private bool _guessed;
 
@@ -19,6 +20,11 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
         _hidePanel.SetActive(true);
         _guessedResources = new List<Resource.Suit>(Enum.GetValues(typeof(Resource.Suit)).Length);
         
+    }
+
+    public void SetGuessedDigitTracker(GuessedDigitTracker tracker)
+    {
+        _guessedDigitTracker = tracker;
     }
 
     public void SetSuit(Resource.Suit suit)
@@ -60,6 +66,7 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
             _hidePanel.SetActive(false);
             _guessedResourceDisplay.gameObject.SetActive(false);
             _guessed = true;
+            _guessedDigitTracker.MarkSlotAsGuessed(this);
         }
         else
         {
