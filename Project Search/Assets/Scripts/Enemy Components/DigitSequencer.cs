@@ -4,11 +4,44 @@ using UnityEngine;
 
 public class DigitSequencer : MonoBehaviour
 {
-    [SerializeField] private DigitSlot[] _digitSlots;
+    [SerializeField] private GameObject _digitSlotTemplate;
+    [SerializeField] private CenterHorizontalLayout _digitSlotHolder;
 
+    private DigitSlot[] _digitSlots;
     private DigitSequenceOptions _digitOptions;
+    private Bounds[] _bounds;
     
+    public void CreateDigitSlots(int slotCount)
+    {
+        RemoveExistingSlots();
+        
+        _bounds = new Bounds[slotCount];
+        _digitSlots = new DigitSlot[slotCount];
+        
+        for (int i = 0; i < slotCount; i++)
+        {
+            GameObject slotObj = Instantiate(_digitSlotTemplate, _digitSlotHolder.transform);
+            _digitSlots[i] = slotObj.GetComponent<DigitSlot>();
+            _bounds[i] = slotObj.GetComponent<Collider2D>().bounds;
+        }
 
+        float[] xPositions = _digitSlotHolder.CalculatePositions(_bounds);
+        
+        for (int i = 0; i < _digitSlots.Length; i++)
+        {
+            Transform slotTransform = _digitSlots[i].transform;
+            slotTransform.position = new Vector3(xPositions[i], slotTransform.position.y, slotTransform.position.z);
+        }
+    }
+    
+    private void RemoveExistingSlots()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+    }
+    
     public void CreateSequence(List<Trait> traits)
     {
         // init digit options

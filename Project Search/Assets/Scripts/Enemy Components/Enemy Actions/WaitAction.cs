@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Wait_EnemyAction", menuName = "ScriptableObjects/Enemy Actions/Wait")]
+[CreateAssetMenu(fileName = "Wait_EnemyAction", menuName = "ScriptableObjects/Enemy/Actions/Wait")]
 public class WaitAction : EnemyAction
 {
     

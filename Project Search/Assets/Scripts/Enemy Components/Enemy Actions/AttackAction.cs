@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Attack_EnemyAction", menuName = "ScriptableObjects/Enemy Actions/Attack")]
+[CreateAssetMenu(fileName = "Attack_EnemyAction", menuName = "ScriptableObjects/Enemy/Actions/Attack")]
 public class AttackAction : EnemyAction
 {
     public int damage => _damage;

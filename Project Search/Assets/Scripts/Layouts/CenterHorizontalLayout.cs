@@ -13,6 +13,7 @@ public class CenterHorizontalLayout : MonoBehaviour
    }
 
 
+   //todo: add an apply step
    public float[] CalculatePositions(Bounds[] bounds)
    {
       float[] positions = new float[bounds.Length];
@@ -37,4 +38,5 @@ public class CenterHorizontalLayout : MonoBehaviour
       }
       return positions;
    }
+   
 }
