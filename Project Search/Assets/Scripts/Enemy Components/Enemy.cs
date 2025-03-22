@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+   public static event Action<Enemy> EnemyDied;
    [SerializeField] private DigitSequencer _digitSequencer;
    [SerializeField] private TraitsDisplay _traitsDisplay;
    [SerializeField] private EnemyIntentDisplay _intentDisplay;
@@ -34,6 +36,8 @@ public class Enemy : MonoBehaviour
 
    public void Die()
    {
+      EnemyDied?.Invoke(this);
+      
       Destroy( gameObject);
    }
 }

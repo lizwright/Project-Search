@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Bounds[] _bounds;
 
-    public void SpawnEnemies(List<EnemyData> enemyData)
+    public Enemy[] SpawnEnemies(List<EnemyData> enemyData)
     {
         RemoveExistingEnemies();
         _bounds = new Bounds[enemyData.Count];
@@ -29,6 +29,8 @@ public class EnemySpawner : MonoBehaviour
             Transform enemyTransform = enemies[i].transform;
             enemyTransform.position = new Vector3(xPositions[i], enemyTransform.position.y, enemyTransform.position.z);
         }
+
+        return enemies;
     }
     
     private void RemoveExistingEnemies()

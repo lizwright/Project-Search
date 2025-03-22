@@ -3,24 +3,28 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelData _level;
-    [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private TurnManager _turnManager;
-
-    private int _encounterIndex;
-
+    [SerializeField] private EncounterManager _encounterManager;
+    
     private void Start()
     {
         _turnManager.EnterOutOfCombat();
+        _encounterManager.SetLevel(_level);
         
-        SpawnNextEncounter();
-        
-        _turnManager.StartPlayerTurn();
+        StartNextEncounter();
     }
 
-    private void SpawnNextEncounter()
+    public void StartNextEncounter()
     {
-        EncounterData encounter = _level.Encounters[_encounterIndex];
-        _enemySpawner.SpawnEnemies(encounter.EnemyData);
-        _encounterIndex++;
+        if (_encounterManager.LevelHasNextEncounter() == false)
+        {
+            Debug.Log("LEVEL COMPLETE !");
+            return;
+        }
+
+        _encounterManager.SpawnNextEncounter();
+        
+        _turnManager.StartPlayerTurn();
+
     }
 }

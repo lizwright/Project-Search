@@ -53,8 +53,8 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
             return;
         }
         
-        MakeAGuess(resource.ResourceSuit);
         resource.RemoveFromPlay();
+        MakeAGuess(resource.ResourceSuit);
     }
 
     private void MakeAGuess(Resource.Suit guess)

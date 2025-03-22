@@ -3751,6 +3751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1293295976}
   - component: {fileID: 1293295975}
+  - component: {fileID: 1293295977}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -3771,8 +3772,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 11400000, guid: abf7d4a80b976ba4798547da72ec9753, type: 2}
-  _enemySpawner: {fileID: 85822918}
   _turnManager: {fileID: 2029221820}
+  _encounterManager: {fileID: 1293295977}
 --- !u!4 &1293295976
 Transform:
   m_ObjectHideFlags: 0
@@ -3788,6 +3789,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1293295977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293295974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0470c48296951a49a1744a3dc4e2a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 1293295975}
+  _enemySpawner: {fileID: 85822918}
 --- !u!1 &1337518266
 GameObject:
   m_ObjectHideFlags: 0
