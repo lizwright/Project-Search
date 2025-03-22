@@ -19,6 +19,11 @@ public class GameHand : MonoBehaviour
         InputManager.Actions.Game.PickUp.canceled += Drop;
     }
 
+    private void OnDisable()
+    {
+        InputManager.Actions.Game.PickUp.performed -= PickUp;
+        InputManager.Actions.Game.PickUp.canceled -= Drop;
+    }
     private void Update()
     {
         transform.position = InputManager.GetMouseWorldPosition();

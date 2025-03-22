@@ -4,9 +4,11 @@ using UnityEngine;
 public class PlayerHealth : Singleton<PlayerHealth>
 {
     public static event Action HealthChanged;
+    public static event Action PlayerDied;
 
     [SerializeField] private int _startingHealth;
 
+    public bool PlayerAlive => _health > 0;
     public int StartingHealth => _startingHealth;
     public int Health => _health;
     
@@ -24,6 +26,10 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         _health -= amount;
         HealthChanged?.Invoke();
+        if (_health <= 0)
+        {
+            PlayerDied?.Invoke();
+        }
     }
     
     public void RestoreHealth(int amount)
@@ -37,4 +43,5 @@ public class PlayerHealth : Singleton<PlayerHealth>
         _health = newValue;
         HealthChanged?.Invoke();
     }
+    
 }

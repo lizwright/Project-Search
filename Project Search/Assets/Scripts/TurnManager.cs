@@ -31,6 +31,11 @@ public class TurnManager : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.TakeTurn();
+            if (PlayerHealth.Instance.PlayerAlive == false)
+            {
+                EnterOutOfCombat();
+                return;
+            }
         }
         
         StartPlayerTurn();
