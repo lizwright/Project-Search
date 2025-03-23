@@ -1032,6 +1032,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 557110427}
+  - component: {fileID: 557110429}
+  - component: {fileID: 557110428}
   m_Layer: 0
   m_Name: Action Cards
   m_TagString: Untagged
@@ -1058,6 +1060,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &557110428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557110426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3e643880ba75040bcdc5de8460305f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerTransform: {fileID: 557110427}
+  spacing: 0.1
+--- !u!114 &557110429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557110426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d65b8623758ba1409a231e4aab0ec47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionCardTemplate: {fileID: 9198131845754981955, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
+  _holder: {fileID: 557110428}
+  _debugActionData:
+  - {fileID: 11400000, guid: 516f975d9289afb4e9d04ad28b9e82ad, type: 2}
+  - {fileID: 11400000, guid: 01740e2e5d074e74f89974195658363a, type: 2}
 --- !u!1 &573950779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,7 +1433,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9198131845754981954, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9198131845754981954, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1941,7 +1974,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9198131845754981954, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9198131845754981954, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2260,7 +2293,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9198131845754981954, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9198131845754981954, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
       propertyPath: m_LocalPosition.x
