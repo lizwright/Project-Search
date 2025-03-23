@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb840f0e9a309a47b79e62166f173c1, type: 3}
   m_Name: Test2_ActionCard
   m_EditorClassIdentifier: 
+  _cost: 3

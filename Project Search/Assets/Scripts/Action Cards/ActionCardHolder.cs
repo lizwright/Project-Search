@@ -21,6 +21,7 @@ public class ActionCardHolder : MonoBehaviour
         for (int i = 0; i < actionData.Count; i++)
         {
             ActionCard card = Instantiate(_actionCardTemplate, _holder.transform).GetComponent<ActionCard>();
+            card.Initialise(actionData[i]);
             cards[i] = card;
         }
         
