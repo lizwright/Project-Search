@@ -9,6 +9,18 @@ public class ActionCard : Draggable
 
     private bool _isReady;
 
+    public override void OnPickUp()
+    {
+        if(_isReady)
+            base.OnPickUp();
+    }
+
+    public override void OnNonReceivedDrop()
+    {
+        if(_isReady)
+            base.OnNonReceivedDrop();
+    }
+
     public void Initialise(ActionCardData data)
     {
         _gauge.Initialise(data.Cost);

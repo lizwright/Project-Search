@@ -5,7 +5,7 @@ public abstract class Draggable : MonoBehaviour, Idraggable
     private Vector3 _lastNonHeldPosition;
     private bool _beingHeld;
 
-    public void OnPickUp()
+    public virtual void OnPickUp()
     {
         _lastNonHeldPosition = transform.position;
         _beingHeld = true;
@@ -24,7 +24,7 @@ public abstract class Draggable : MonoBehaviour, Idraggable
         transform.position = InputManager.GetMouseWorldPosition(); 
     }
     
-    public void OnNonReceivedDrop()
+    public virtual void OnNonReceivedDrop()
     {
         transform.position = _lastNonHeldPosition;
         _beingHeld = false;
