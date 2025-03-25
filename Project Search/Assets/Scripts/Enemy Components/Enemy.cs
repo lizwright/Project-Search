@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDraggableReceiver
 {
    public static event Action<Enemy> EnemyDied;
    [SerializeField] private DigitSequencer _digitSequencer;
@@ -39,5 +39,29 @@ public class Enemy : MonoBehaviour
       EnemyDied?.Invoke(this);
       
       Destroy( gameObject);
+   }
+
+   public bool CanReceiveDraggable(Idraggable draggable)
+   {
+      if (draggable is not ActionCard actionCard)
+         return false;
+      
+      if (actionCard.Target != ActionCardData.ActionTarget.Enemy)
+         return false;
+
+      return true;
+   }
+
+   public void ReceiveDraggable(Idraggable draggable)
+   {
+      ActionCard actionCard = draggable as ActionCard;
+      if (actionCard == null)
+      {
+         Debug.LogError("Something went wrong. Enemy received an Idraggable it can't handle! ");
+         return;
+      }
+        
+      actionCard.RemoveFromPlay();
+      actionCard.DoAction();
    }
 }
