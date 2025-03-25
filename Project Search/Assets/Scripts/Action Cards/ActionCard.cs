@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ActionCard : Draggable
@@ -10,6 +11,7 @@ public class ActionCard : Draggable
 
     private bool _isReady;
     private ActionCardData.ActionTarget _target;
+    private ActionCardData _data;
 
     public override void OnPickUp()
     {
@@ -25,6 +27,8 @@ public class ActionCard : Draggable
 
     public void Initialise(ActionCardData data)
     {
+        _data = data;
+        
         _gauge.Initialise(data.Cost);
         
         _isReady = data.Cost == 0;
@@ -37,9 +41,19 @@ public class ActionCard : Draggable
         transform.position = new Vector3(1000, 1000, transform.position.z);
     }
 
-    public void DoAction()
+    public void DoAction(IDraggableReceiver receiver)
     {
-        Debug.Log("Action card would do something here!");
+        Type type = _data.Script.GetClass();
+        if (type != null && type.IsClass && !type.IsAbstract)
+        {
+            object actionObj = Activator.CreateInstance(type);
+            if (actionObj is ActionCardAction action)
+            {
+                action.DoAction(receiver);
+                return;
+            }
+        }
+        Debug.LogError("Tried to do action. Something went wrong!");
     }
 
     public void GainResource(Resource _)

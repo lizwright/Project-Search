@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Resource : Draggable
@@ -14,5 +15,11 @@ public class Resource : Draggable
     public void RemoveFromPlay()
     {
         resourceHolder.RemoveResource(this);
+    }
+    
+    public static Suit GetRandomSuit()
+    {
+        Array values = Enum.GetValues(typeof(Suit));
+        return (Suit)values.GetValue(UnityEngine.Random.Range(0, values.Length));
     }
 }

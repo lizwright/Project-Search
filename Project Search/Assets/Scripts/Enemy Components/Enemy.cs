@@ -62,6 +62,6 @@ public class Enemy : MonoBehaviour, IDraggableReceiver
       }
         
       actionCard.RemoveFromPlay();
-      actionCard.DoAction();
+      actionCard.DoAction(this);
    }
 }

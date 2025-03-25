@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DigitSlot : MonoBehaviour, IDraggableReceiver
 {
+    public bool Guessed => _guessed;
+
     [SerializeField] private GameObject _hidePanel;
     [SerializeField] private ResourceDisplay _hiddenResourceDisplay;
     [SerializeField] private ResourceDisplay _guessedResourceDisplay;
@@ -57,7 +59,7 @@ public class DigitSlot : MonoBehaviour, IDraggableReceiver
         MakeAGuess(resource.ResourceSuit);
     }
 
-    private void MakeAGuess(Resource.Suit guess)
+    public void MakeAGuess(Resource.Suit guess)
     {
         _guessedResources.Add(guess);
         
