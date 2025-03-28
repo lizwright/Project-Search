@@ -81,3 +81,65 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
+--- !u!4 &7316846422750119890 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 14379592600631600, guid: 07760b63eec8b9546b89d4ce6b9cc28a, type: 3}
+  m_PrefabInstance: {fileID: 7330100046721089250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7949940873366508829
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7316846422750119890}
+    m_Modifications:
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857572237714419169, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548854907878107199, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}
+      propertyPath: m_Name
+      value: Triangle Symbol
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce3e60ee440649d4aa9522421cfc820a, type: 3}

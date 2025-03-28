@@ -4,6 +4,8 @@ public class ActionCardResourceSlot : MonoBehaviour, IDraggableReceiver
 {
     [SerializeField] private ActionCard _actionCard;
     [SerializeField] private GameObject _suitDependentView;
+    [SerializeField] private ResourceDisplay _resourceDisplay;
+    
     public bool CanReceiveDraggable(Idraggable draggable)
     {
         if (draggable is not Resource)
@@ -32,5 +34,11 @@ public class ActionCardResourceSlot : MonoBehaviour, IDraggableReceiver
     public void ShowSuitDependentView()
     {
         _suitDependentView.SetActive(true);
+    }
+
+    public void ShowSuit(Resource.Suit suit)
+    {
+        _suitDependentView.SetActive(false);
+        _resourceDisplay.ShowResource(suit);
     }
 }

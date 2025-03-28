@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,12 +32,17 @@ public class GameHand : MonoBehaviour
 
     private void PickUp(InputAction.CallbackContext _)
     {
-        if (RaycastForDraggable(out Idraggable hitDraggable))
+        if (RaycastForDraggable(out Idraggable[] hitDraggables))
         {
-            if (hitDraggable.AllowPickUp() == false)
+            foreach (var hitDraggable in hitDraggables)
+            {
+                if (hitDraggable.AllowPickUp() == false)
+                    return;
+                _heldDraggable = hitDraggable;
+                hitDraggable.OnPickUp();
                 return;
-            _heldDraggable = hitDraggable;
-            hitDraggable.OnPickUp();
+            }
+            
         }
     }
 
@@ -45,34 +51,40 @@ public class GameHand : MonoBehaviour
        if(_heldDraggable == null) 
            return;
 
-       if (RaycastFoDraggableReceiver(out IDraggableReceiver receiver))
+       if (RaycastFoDraggableReceiver(out IDraggableReceiver[] receivers))
        {
-           if (receiver.CanReceiveDraggable(_heldDraggable))
+           foreach (IDraggableReceiver receiver in receivers)
            {
-               _heldDraggable.OnDrop();
-               receiver.ReceiveDraggable(_heldDraggable);
-               _heldDraggable = null;
-               return;
+               if (receiver.CanReceiveDraggable(_heldDraggable))
+               {
+                   _heldDraggable.OnDrop();
+                   receiver.ReceiveDraggable(_heldDraggable);
+                   _heldDraggable = null;
+                   return;
+               }
            }
+
        }
        
        _heldDraggable.OnNonReceivedDrop();
        _heldDraggable = null;
     }
 
-    private bool RaycastForDraggable(out Idraggable draggable)
+    private bool RaycastForDraggable(out Idraggable[] draggable)
     {
         return RaycastForInteractable(out draggable);
     }
     
-    private bool RaycastFoDraggableReceiver(out IDraggableReceiver receiver)
+    private bool RaycastFoDraggableReceiver(out IDraggableReceiver[] receiver)
     {
         return RaycastForInteractable(out receiver);
     }
 
-    private bool RaycastForInteractable<T>(out T target)
+    private bool RaycastForInteractable<T>(out T[] target)
     {
-        target = default(T);
+        target = default(T[]);
+        List<T> hitTargets = new List<T>();
+        
         int hitCount = Physics2D.RaycastNonAlloc(transform.position, Vector3.forward, _raycastHits,1000, _interactableLayer);
         
         for (int i = 0; i < hitCount; i++)
@@ -84,12 +96,13 @@ public class GameHand : MonoBehaviour
                 Component component = hitObject.GetComponent(typeof(T));
                 if (component is T typedComponent)
                 {
-                    target = typedComponent;
-                    return true;
+                    hitTargets.Add(typedComponent);
                 }
             } 
         }
 
-        return false;
+        target = hitTargets.ToArray();
+
+        return hitTargets.Count > 0;
     }
 }

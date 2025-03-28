@@ -61,9 +61,12 @@ public class ActionCard : Draggable
         _gauge.PayCost();
         _isReady = _gauge.IsFull;
 
-        if (_data.SuitDependent && _gauge.OnFinalMarker)
+        if (_data.SuitDependent )
         {
-            _resourceSlot.ShowSuitDependentView();
+            if(_gauge.OnFinalMarker)
+                _resourceSlot.ShowSuitDependentView();
+            if(_gauge.IsFull)
+                _resourceSlot.ShowSuit(_lastReceivedSuit);
         }
     }
 }
