@@ -33,6 +33,8 @@ public class GameHand : MonoBehaviour
     {
         if (RaycastForDraggable(out Idraggable hitDraggable))
         {
+            if (hitDraggable.AllowPickUp() == false)
+                return;
             _heldDraggable = hitDraggable;
             hitDraggable.OnPickUp();
         }
