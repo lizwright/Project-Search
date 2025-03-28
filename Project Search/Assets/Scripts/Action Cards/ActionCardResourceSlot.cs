@@ -3,9 +3,10 @@ using UnityEngine;
 public class ActionCardResourceSlot : MonoBehaviour, IDraggableReceiver
 {
     [SerializeField] private ActionCard _actionCard;
+    [SerializeField] private GameObject _suitDependentView;
     public bool CanReceiveDraggable(Idraggable draggable)
     {
-        if (draggable is not Resource resource)
+        if (draggable is not Resource)
             return false;
         
         if (_actionCard.IsReady)
@@ -26,5 +27,10 @@ public class ActionCardResourceSlot : MonoBehaviour, IDraggableReceiver
         _actionCard.GainResource(resource);
         resource.RemoveFromPlay();
 
+    }
+
+    public void ShowSuitDependentView()
+    {
+        _suitDependentView.SetActive(true);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class EliminateEnemySymbolsAction : ActionCardAction
 {
-    public override void DoAction(IDraggableReceiver receiver)
+    public override void DoAction(IDraggableReceiver receiver, Resource.Suit _)
     {
         Enemy enemy = receiver as Enemy;
         if (enemy == null)
@@ -18,7 +18,7 @@ public class EliminateEnemySymbolsAction : ActionCardAction
         DigitSlot[] slots = enemy.GetComponentsInChildren<DigitSlot>();
         foreach (DigitSlot slot in slots)
         {
-            if (slot.Guessed == true)
+            if (slot.Guessed)
                 continue;
 
             Resource.Suit suit = Resource.GetRandomSuit();

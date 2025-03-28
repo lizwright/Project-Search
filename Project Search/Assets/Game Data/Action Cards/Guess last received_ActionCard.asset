@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cb840f0e9a309a47b79e62166f173c1, type: 3}
-  m_Name: Test2_ActionCard
+  m_Name: Guess last received_ActionCard
   m_EditorClassIdentifier: 
-  _script: {fileID: 11500000, guid: f4b9c225b49a5894aac7884806d420c1, type: 3}
+  _script: {fileID: 11500000, guid: 514de2408bde7994c8ec4cf7dab5a707, type: 3}
+  _cardName: Guess *
   _cost: 3
   _target: 0
+  _suitDependent: 1

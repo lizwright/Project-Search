@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class ActionCard : Draggable
@@ -8,21 +9,16 @@ public class ActionCard : Draggable
     
     [SerializeField] private ActionCardResourceSlot _resourceSlot;
     [SerializeField] private CostGauge _gauge;
+    [SerializeField] private TMP_Text _nameLabel;
 
     private bool _isReady;
     private ActionCardData.ActionTarget _target;
     private ActionCardData _data;
+    private Resource.Suit _lastReceivedSuit;
 
-    public override void OnPickUp()
+    public override bool AllowPickUp()
     {
-        if(_isReady)
-            base.OnPickUp();
-    }
-
-    public override void OnNonReceivedDrop()
-    {
-        if(_isReady)
-            base.OnNonReceivedDrop();
+        return _isReady;
     }
 
     public void Initialise(ActionCardData data)
@@ -34,6 +30,8 @@ public class ActionCard : Draggable
         _isReady = data.Cost == 0;
 
         _target = data.Target;
+
+        _nameLabel.text = data.CardName;
     }
 
     public void RemoveFromPlay()
@@ -49,17 +47,23 @@ public class ActionCard : Draggable
             object actionObj = Activator.CreateInstance(type);
             if (actionObj is ActionCardAction action)
             {
-                action.DoAction(receiver);
+                action.DoAction(receiver, _lastReceivedSuit);
                 return;
             }
         }
         Debug.LogError("Tried to do action. Something went wrong!");
     }
 
-    public void GainResource(Resource _)
+    public void GainResource(Resource resource)
     {
-        //right now we don't care about the resource, only that one was received;
-        _gauge.PayCost(1);
+        _lastReceivedSuit = resource.ResourceSuit;
+        
+        _gauge.PayCost();
         _isReady = _gauge.IsFull;
+
+        if (_data.SuitDependent && _gauge.OnFinalMarker)
+        {
+            _resourceSlot.ShowSuitDependentView();
+        }
     }
 }

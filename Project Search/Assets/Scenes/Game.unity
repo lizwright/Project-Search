@@ -1089,7 +1089,7 @@ MonoBehaviour:
   _actionCardTemplate: {fileID: 9198131845754981955, guid: d1d06075901517f4eab1809a675a0b74, type: 3}
   _holder: {fileID: 557110428}
   _debugActionData:
-  - {fileID: 11400000, guid: 516f975d9289afb4e9d04ad28b9e82ad, type: 2}
+  - {fileID: 11400000, guid: 015176869a93e3a40a15cc8592956ad8, type: 2}
   - {fileID: 11400000, guid: 01740e2e5d074e74f89974195658363a, type: 2}
 --- !u!1 &573950779
 GameObject:

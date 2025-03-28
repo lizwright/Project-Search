@@ -4,6 +4,7 @@ public class CostGauge : MonoBehaviour
 {
 
     public bool IsFull => _currentCost >= _targetCost;
+    public bool OnFinalMarker => _currentCost == _targetCost - 1;
     
     [SerializeField] private GameObject _gaugeMarkerTemplate;
     [SerializeField] private CenterHorizontalLayout _markerHolder;
