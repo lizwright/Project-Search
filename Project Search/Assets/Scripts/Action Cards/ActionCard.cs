@@ -15,14 +15,27 @@ public class ActionCard : Draggable
     private ActionCardData.ActionTarget _target;
     private ActionCardData _data;
     private Resource.Suit _lastReceivedSuit;
+    private ActionCardHolder _holder;
+
+    private void OnEnable()
+    {
+        EncounterManager.EncounterChanged += Reset;
+    }
+    
+    private void OnDisable()
+    {
+        EncounterManager.EncounterChanged -= Reset;
+    }
 
     public override bool AllowPickUp()
     {
         return _isReady;
     }
 
-    public void Initialise(ActionCardData data)
+    public void Initialise(ActionCardData data, ActionCardHolder holder)
     {
+        _holder = holder;
+        
         _data = data;
         
         _gauge.Initialise(data.Cost);
@@ -36,7 +49,19 @@ public class ActionCard : Draggable
 
     public void RemoveFromPlay()
     {
-        transform.position = new Vector3(1000, 1000, transform.position.z);
+        _holder.MakeCardOutOfPlay(this);
+    }
+
+    private void Reset(int _)
+    {
+        Reset();
+    }
+
+    public void Reset()
+    {
+        _gauge.Reset();
+        _isReady = _data.Cost == 0;
+        _resourceSlot.HideSuitDependentDisplay();
     }
 
     public void DoAction(IDraggableReceiver receiver)

@@ -33,6 +33,7 @@ public class ActionCardResourceSlot : MonoBehaviour, IDraggableReceiver
 
     public void ShowSuitDependentView()
     {
+        _resourceDisplay.HideAllResources();
         _suitDependentView.SetActive(true);
     }
 
@@ -40,5 +41,11 @@ public class ActionCardResourceSlot : MonoBehaviour, IDraggableReceiver
     {
         _suitDependentView.SetActive(false);
         _resourceDisplay.ShowResource(suit);
+    }
+
+    public void HideSuitDependentDisplay()
+    {
+        _suitDependentView.SetActive(false);
+        _resourceDisplay.HideAllResources();
     }
 }

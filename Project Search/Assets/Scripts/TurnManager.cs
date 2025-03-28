@@ -4,6 +4,7 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     [SerializeField] private ResourceHolder _resourceHolder;
+    [SerializeField] private ActionCardHolder _actionCardHolder;
     [SerializeField] private Transform _enemyHolder;
 
     public void EnterOutOfCombat()
@@ -14,6 +15,7 @@ public class TurnManager : MonoBehaviour
     public void StartPlayerTurn()
     {
         _resourceHolder.RefreshResources();
+        _actionCardHolder.RefreshCards();
         
         InputManager.EnableGameInput();
     }

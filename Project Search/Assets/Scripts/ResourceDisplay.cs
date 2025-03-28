@@ -14,7 +14,7 @@ public class ResourceDisplay : MonoBehaviour
         HideAllResources();
     }
 
-    private void HideAllResources()
+    public void HideAllResources()
     {
         _circle.SetActive(false);
         _square.SetActive(false);

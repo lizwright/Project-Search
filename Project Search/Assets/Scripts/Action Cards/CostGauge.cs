@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CostGauge : MonoBehaviour
@@ -26,7 +27,13 @@ public class CostGauge : MonoBehaviour
         _currentCost += value;
         UpdateMarkers();
     }
-    
+
+    public void Reset()
+    {
+        _currentCost = 0;
+        UpdateMarkers();
+    }
+
     private void CreateMarkers(int amount)
     {
         _markerHolder.RemoveChildren(transform);

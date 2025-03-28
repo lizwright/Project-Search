@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EncounterManager _encounterManager;
     [SerializeField] private GameObject _winUI;
     [SerializeField] private GameObject _loseUI;
-    
+
     private void Start()
     {
         _winUI.SetActive(false);
