@@ -195,8 +195,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2667176388847931534}
   - component: {fileID: 8830675920830565623}
-  - component: {fileID: 4650469336747075660}
   - component: {fileID: 6535195172761531359}
+  - component: {fileID: 4443355190082880127}
   m_Layer: 7
   m_Name: Intent Bubble
   m_TagString: Untagged
@@ -238,20 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 7386298097353772163}
   _text: {fileID: 2677707365017595094}
---- !u!114 &4650469336747075660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2667176388847931537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b882edf31f726e44a9db96ffe73ea56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tooltipPoint: {fileID: 7719916028841026185}
-  _boundary: {fileID: 6535195172761531359}
+  _tooltip: {fileID: 4443355190082880127}
 --- !u!58 &6535195172761531359
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -268,6 +255,19 @@ CircleCollider2D:
   m_Offset: {x: -0.05358112, y: 3.21}
   serializedVersion: 2
   m_Radius: 1.0679097
+--- !u!114 &4443355190082880127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667176388847931537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa869e2777ade2146ab59578e352397c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tooltipPoint: {fileID: 7719916028841026185}
 --- !u!1 &2667176389317276789
 GameObject:
   m_ObjectHideFlags: 0

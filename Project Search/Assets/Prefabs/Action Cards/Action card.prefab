@@ -236,6 +236,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &9186501020174964202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4996747803316834020}
+  m_Layer: 7
+  m_Name: Tooltip location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4996747803316834020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186501020174964202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.25, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9198131845754981954}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9198131845642142529
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +446,7 @@ GameObject:
   - component: {fileID: 9198131845754981954}
   - component: {fileID: 6951900830160236646}
   - component: {fileID: 1862111287331453222}
+  - component: {fileID: 5025599093872202097}
   m_Layer: 7
   m_Name: Action card
   m_TagString: Untagged
@@ -438,6 +470,7 @@ Transform:
   - {fileID: 2943266725308433662}
   - {fileID: 9198131845760069440}
   - {fileID: 1304137794525816236}
+  - {fileID: 4996747803316834020}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -456,6 +489,7 @@ MonoBehaviour:
   _resourceSlot: {fileID: 3987885074535099632}
   _gauge: {fileID: 8257130993469295192}
   _nameLabel: {fileID: 5882276302974958180}
+  _tooltip: {fileID: 5025599093872202097}
 --- !u!61 &1862111287331453222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -482,6 +516,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &5025599093872202097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9198131845754981955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa869e2777ade2146ab59578e352397c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tooltipPoint: {fileID: 4996747803316834020}
 --- !u!1 &9198131845760069441
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Attack_EnemyAction
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 22e3af566e8587d49994a68240444f8c, type: 3}
+  tooltip: Deals damage to player
   _damage: 1

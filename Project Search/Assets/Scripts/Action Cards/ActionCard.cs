@@ -10,6 +10,7 @@ public class ActionCard : Draggable
     [SerializeField] private ActionCardResourceSlot _resourceSlot;
     [SerializeField] private CostGauge _gauge;
     [SerializeField] private TMP_Text _nameLabel;
+    [SerializeField] private Tooltip _tooltip;
 
     private bool _isReady;
     private ActionCardData.ActionTarget _target;
@@ -45,6 +46,8 @@ public class ActionCard : Draggable
         _target = data.Target;
 
         _nameLabel.text = data.CardName;
+        
+        _tooltip.SetMessage(data.Tooltip);
     }
 
     public void RemoveFromPlay()

@@ -14,10 +14,12 @@ public class ActionCardData : ScriptableObject
     public int Cost => _cost;
     public ActionTarget Target => _target;
     public bool SuitDependent => _suitDependent;
+    public string Tooltip => _tooltip;
 
     [SerializeField] private MonoScript _script;    
     [SerializeField] private string _cardName;
     [Min(0)] [SerializeField] private int _cost;
     [SerializeField] private ActionTarget _target;
     [SerializeField] private bool _suitDependent;
+    [SerializeField] private string _tooltip;
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wait_EnemyAction
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 4d9a1b7f67ba2f240955a2de924abff4, type: 3}
+  tooltip: Does nothing

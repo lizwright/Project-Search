@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 5
   _icon: {fileID: 21300000, guid: cdfd010b76db2dd42a896fe72577b4e9, type: 3}
+  _tooltip: "Digits won\u2019t contain a single suit"

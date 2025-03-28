@@ -17,3 +17,4 @@ MonoBehaviour:
   _cost: 3
   _target: 0
   _suitDependent: 1
+  _tooltip: '[Enemy] Guess * in all digits of the enemy'

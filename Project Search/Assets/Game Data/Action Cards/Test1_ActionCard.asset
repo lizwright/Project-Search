@@ -17,3 +17,4 @@ MonoBehaviour:
   _cost: 0
   _target: 0
   _suitDependent: 0
+  _tooltip: '[Enemy] Eliminates 1 symbol for every digit on this enemy'

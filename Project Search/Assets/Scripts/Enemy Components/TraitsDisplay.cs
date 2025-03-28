@@ -19,7 +19,7 @@ public class TraitsDisplay : MonoBehaviour
             GameObject traitObj = Instantiate(_traitTemplate, transform.position, quaternion.identity, transform);
             traitTransforms[i] = traitObj.transform;
             TraitIcon traitIcon = traitObj.GetComponent<TraitIcon>();
-            traitIcon.SetIcon(traits[i].Icon);
+            traitIcon.SetTrait(traits[i]);
         }
 
         _layout.Reposition(traitTransforms);

@@ -5,6 +5,7 @@ public class EnemyIntentDisplay : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _icon;
     [SerializeField] private TMP_Text _text;
+    [SerializeField] private Tooltip _tooltip;
 
     public void ShowIntent(EnemyAction action)
     {
@@ -17,6 +18,8 @@ public class EnemyIntentDisplay : MonoBehaviour
         {
             _text.text = string.Empty;
         }
+        
+        _tooltip.SetMessage(action.Tooltip);
     }
 
 }

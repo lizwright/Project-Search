@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class TooltipRequestor : MonoBehaviour, IHoverable
+public abstract class TooltipRequestor : MonoBehaviour, IHoverable
 {
     [SerializeField] private Transform _tooltipPoint;
 
-    private const float KHoverDuration = 1f;
+    private const float KHoverDuration = 0.75f;
     private bool _hovering;
     private float _hoverEnterTime;
     private bool _hasTooltip;
 
+    protected abstract string GetMessage();
     private void Awake()
     {
         _hovering = false;
@@ -31,7 +32,7 @@ public class TooltipRequestor : MonoBehaviour, IHoverable
         {
             if (Time.time >= _hoverEnterTime + KHoverDuration)
             {
-                TooltipBox.Instance.ShowAtPosition("message goes here", _tooltipPoint.position);
+                TooltipBox.Instance.ShowAtPosition(GetMessage(), _tooltipPoint.position);
                 _hasTooltip = true;
             }
         }
