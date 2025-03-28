@@ -7,9 +7,11 @@ public class GameHand : MonoBehaviour
     private LayerMask _interactableLayer;
     private Idraggable _heldDraggable;
     private RaycastHit2D[] _raycastHits;
+    private List<IHoverable> _currentHoverables;
 
     private void Awake()
     {
+        _currentHoverables = new List<IHoverable>();
         _interactableLayer = LayerMask.GetMask("Interactable");
         _raycastHits = new RaycastHit2D[4];
     }
@@ -28,8 +30,45 @@ public class GameHand : MonoBehaviour
     private void Update()
     {
         transform.position = InputManager.GetMouseWorldPosition();
+        Hover();
     }
 
+    private void Hover()
+    {
+        RaycastForHoverable(out IHoverable[] hitHoverables);
+        //check if current hovers are in hit list. If not call their exit and remove
+        for (int i = _currentHoverables.Count - 1; i >= 0; i--)
+        {
+            IHoverable currentHoverable = _currentHoverables[i];
+            bool found = false;
+            foreach (var hitHoverable in hitHoverables)
+            {
+                if (currentHoverable == hitHoverable)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == false)
+            {
+                currentHoverable.OnHoverExit();
+                _currentHoverables.Remove(currentHoverable);
+            }
+        }
+        
+        //for all hits, if you're not in the current list, call their enter and add them
+        for (int i = hitHoverables.Length - 1; i >= 0; i--)
+        {
+            var currentHit = hitHoverables[i];
+            if (_currentHoverables.Contains(currentHit) == false)
+            {
+                currentHit.OnHoverEnter();
+                _currentHoverables.Add(currentHit);
+            }
+        }
+    }
+    
     private void PickUp(InputAction.CallbackContext _)
     {
         if (RaycastForDraggable(out Idraggable[] hitDraggables))
@@ -70,6 +109,11 @@ public class GameHand : MonoBehaviour
        _heldDraggable = null;
     }
 
+    private bool RaycastForHoverable(out IHoverable[] hoverable)
+    {
+        return RaycastForInteractable(out hoverable);
+    }
+    
     private bool RaycastForDraggable(out Idraggable[] draggable)
     {
         return RaycastForInteractable(out draggable);
